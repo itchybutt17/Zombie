@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+ <title>Zombie Game</title> 
+ <style>
+body{
+    background-image:url("background.jpg");
+        
+}
+h1{
+    
+    color:beige;        
+    font-family: 'Courier New', Courier, monospace;        
+    text-align: center;
+    
+}
+#score{
+    text-align: center;;
+    font-size: 30px;
+    color: beige;
+}
+#reset{
+    background-color: black;
+    font-size: 30px;    
+    color: beige;
+    position: absolute;
+    bottom: 10px;
+    left:45%;
+}
+</style>
+</head>  
+<body>
+    <div>
+        <h1>CLICK THE ZOMBIES</h1>
+    </div>
+
+    <div id = "but">
+            <h2 id="score">Score: 0</h2>
+
+    </div>
+    <button id="reset" type="submit"  onClick="refreshPage()">Reset</button>
+
+    <img src ="images/zombie.gif" id="zombie" width="200" height="200" left="40%" top="35%">
+    <audio id="explosion">
+        <source src="images/zombie.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        let score = 0;
+        let picture = document.getElementById('zombie');
+        let audio = document.getElementById("explosion");
+
+        let isExploding = false;
+        let explosionTime = 1500;
+
+        function refreshPage(){
+            window.location.reload();
+        } 
+
+        function counter(){
+            score++;
+            document.getElementById('score').innerHTML = "Score: " + score;
+        }
+
+        function handler() {
+            if (isExploding) {
+                return
+            }
+            
+            isExploding = true;
+            exploid();
+            counter();
+            setTimeout(function () {
+                birth();
+                isExploding = false;
+            }, explosionTime);
+        }
+        function exploid() {
+            picture.src = "images/explosion.gif";
+            audio.play();
+        }
+        function birth() {
+            picture.src = "images/zombie.gif";
+        }
+
+        function zombiemove(){
+            screenW = screen.height - picture.height;
+            screenH = screen.width - picture.width;
+            picture.style.position = "absolute";
+            picture.style.top = Math.floor(Math.random() * screenW) + 'px';
+            picture.style.left = Math.floor(Math.random() * screenH) + 'px'; 
+        }
+        setInterval(zombiemove, 2000)
+        picture.onclick = handler
+    </script>
+</body>
+</html>
