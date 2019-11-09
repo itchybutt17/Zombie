@@ -3,32 +3,7 @@
 <html lang="en">
 <head>
  <title>Zombie Game</title> 
- <style>
-body{
-    background-image:url("background.jpg");
-        
-}
-h1{
-    
-    color:beige;        
-    font-family: 'Courier New', Courier, monospace;        
-    text-align: center;
-    
-}
-#score{
-    text-align: center;;
-    font-size: 30px;
-    color: beige;
-}
-#reset{
-    background-color: black;
-    font-size: 30px;    
-    color: beige;
-    position: absolute;
-    bottom: 10px;
-    left:45%;
-}
-</style>
+ <link rel="stylesheet" href="css/style.css">
 </head>  
 <body>
     <div>
@@ -43,7 +18,7 @@ h1{
 
     <img src ="images/zombie.gif" id="zombie" width="200" height="200" left="40%" top="35%">
     <audio id="explosion">
-        <source src="images/zombie.mp3" type="audio/mpeg">
+        <source src="src/zombie.mp3" type="audio/mpeg">
     </audio>
 
     <script>
